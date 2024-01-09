@@ -2,9 +2,7 @@
 const { merge } = require("webpack-merge");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const { VueLoaderPlugin } = require('vue-loader');
-
-const { getGlobal, getwebpropath } = require("../../common/utils");
-const { pathJoin } = require("../../common/utils/path");
+const { pathJoin,getGlobal } = require("../../../common/utils/path");
 const styleConfig = require("../../common/style.config");
 const { resolveAppnameDir, resolveClientShare } = require("../../common/utils/joinPath");
 

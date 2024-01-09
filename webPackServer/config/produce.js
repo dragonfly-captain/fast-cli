@@ -18,7 +18,7 @@ const OS = require('os');
 const webpackBase = require("./base");
 const envConfig = require("../common/env.config");
 const microConfig = require("../common/micro.config");
-const { getGlobal } = require("../common/utils");
+const { getGlobal } = require("../../common/utils/path");
 const { resolveIndexHtml } = require("../common/utils/joinPath");
 
 const isProduction = getGlobal("isProduction");

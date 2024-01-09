@@ -40,6 +40,10 @@ function getpropath(pathname) {
   return path.join(dir, pathname);
 }
 
+function getwebpropath() {
+  return path.join(process.cwd(), '../../');
+};
+
 function getBaseName(pathname) {
   return path.basename(pathname);
 }
@@ -51,5 +55,6 @@ module.exports = {
   getLocalAddressIP,
   getclipath,
   getpropath,
-  getBaseName
+  getBaseName,
+  getwebpropath
 };

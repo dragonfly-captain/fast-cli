@@ -3,7 +3,7 @@ const { HotModuleReplacementPlugin } = require('webpack');
 // const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
 
 const { getclipath, pathJoin, getGlobal } = require("../../common/utils/path");
-const { getwebpropath } = require('./utils');
+const { getwebpropath } = require('../../common/utils/path');
 const { mergeAlias, mergePort, mergeProxy, mergePlugins } = require("./utils/customMergeConfig");
 const isProduction = getGlobal("isProduction");
 const appname = getGlobal("appname");    // 当前项目

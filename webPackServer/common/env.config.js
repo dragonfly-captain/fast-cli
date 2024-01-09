@@ -1,7 +1,7 @@
 "use strict";
 const fs = require("fs");
 const { pathJoin, getclipath, getLocalAddressIP, getGlobal } = require("../../common/utils/path");
-const { getwebpropath } = require("./utils");
+const { getwebpropath } = require("../../common/utils/path");
 
 module.exports = {
   dev: {

@@ -1,4 +1,4 @@
-const { getGlobal } = require("./common/utils");
+const { getGlobal } = require("../common/utils/path");
 const cwd = getGlobal('cwd');
 const frame = getGlobal('frame');
 // const skip = process.env.npm_config.skip;

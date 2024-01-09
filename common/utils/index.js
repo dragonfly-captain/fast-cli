@@ -1,97 +1,8 @@
 const shelljs = require('shelljs');
 const spawn = require('cross-spawn');
-const sudo = require('sudo-prompt');
 const colors = require('colors');
-const loading = require('loading-cli');
-const package = require('../../package.json');
 const { mlog } = require('./logWithLineInfo');
-const { isWin } = require('../../lib/cmd');
 
-// 通过 n 工具切换node的版本
-function switchNodeVersion(version) {
-  return new Promise((resolve, reject) => {
-    const successResponse = responseFormat({
-      code: 200,
-      success: true,
-      message: `使用 n 工具，成功切换到 Node.js 版本 ${version}`
-    });
-    const catchResponse = responseFormat({
-      code: 4030,
-      message: `使用 n 工具，切换 Node.js 版本时出错 ${err}`
-    });
-
-    isWin().then(resp => {
-      if (resp) {
-      } else {
-        executeCommand(
-          'sudo', `n ${version}`
-        ).then(resp => {
-          // let data = resp.data;
-          // console.log('switchNodeVersion', data);
-          resolve(successResponse);
-        }).catch(err => {
-          mlog(err);
-          // console.log(err);
-          reject(catchResponse);
-        });
-      }
-    });
-  });
-};
-
-// 启动命令
-function executeCommand(command, args = "") {
-  // console.log(command, args);
-  if (command === "sudo") {
-    return sudoPromptChildProcess(args);
-  } else {
-    return childProcessSpawn(command, args);
-  }
-};
-
-// 基于 sudo-prompt 模块执行的子进程
-function sudoPromptChildProcess(args) {
-  return new Promise((resolve, reject) => {
-    // 使用 sudo-prompt 执行命令
-    sudo.exec(`${args}`, { name: package.name }, (error, stdout, stderr) => {
-      if (error) {
-        reject(
-          responseFormat({
-            message: `Error: ${error.message} [基于 sudo-prompt 模块执行的子进程发生异常错误，执行参数为：${args}]`
-          })
-        );
-        return;
-      }
-
-      if (stderr) {
-        mlog(`[log stderr] ${stderr}`);
-      }
-
-      if (stdout) {
-        // console.log(`stdout: ${stdout}`);
-        resolve(
-          responseFormat({
-            code: 1020,
-            success: true,
-            data: {
-              stdout: stdout
-            }
-          })
-        );
-      } else {
-        resolve(
-          responseFormat({
-            code: 200,
-            success: true,
-            data: {
-              stdout: stdout
-            }
-          })
-        );
-      }
-    });
-  });
-};
 // 基于 child_process spawn 执行的命令
 function childProcessSpawn(command, args) {
   return new Promise((resolve, reject) => {
@@ -194,51 +105,6 @@ function shelljsChildProcessSpawn(command, args, hasClear = true) {
     });
   });
 };
-
-// 安装指定的依赖包
-function installPackage(command, params = [], pkgname = '') {
-  return new Promise((resolve, reject) => {
-    // 命令行参数
-    const args = params.split(" ");
-    // 创建一个子进程
-    const child = spawn(command, args);
-
-    console.log('[log info]', `正在执行 ${command} ${params} 命令。`);
-
-    // 从子进程的 stdout 获取数据并打印
-    child.stdout.on('data', (data) => {
-      console.log('[log stdout] ', colors.grey(`正在安装${pkgname}，${data.toString()}。`));
-    });
-
-    // 从子进程的 stderr 获取数据并打印
-    child.stderr.on('data', (data) => {
-      console.log('[stderr log] ', colors.red(`安装中出现异常，${data.toString()}。`));
-    });
-
-    // 监听子进程的 'close' 事件
-    child.on('close', (code) => {
-      if (code !== 0) {
-        new Error(`command "${command} ${params}" exited with wrong status code "${code}"`);
-        process.exit(1);
-        // return reject();
-      } else {
-        console.log('[log stdout] ', colors.green(`${pkgname} 安装完成。`));
-        resolve(
-          responseFormat({
-            code: 200,
-            success: true
-          })
-        );
-      }
-    });
-
-    // 监听子进程的 'error' 事件
-    child.on('error', (err) => {
-      console.log('[error log] ', err);
-    });
-  });
-};
-// const memoryUsage = process.memoryUsage();
 
 // 通过命令行执行命令
 function commandLineInterface(cmd, params = [], logs = {}, hasClear = true) {
@@ -349,19 +215,8 @@ function handleOutput(output) {
   return result.join('\n');
 }
 
-// 获取启动项目的项目名称
-function getAppName() {
-  const $cwd = process.env.$cwd
-  const cwdLen = $cwd.split('/')
-  return cwdLen[cwdLen.length -1]
-}
-
 module.exports = {
-  switchNodeVersion,
-  executeCommand,
   responseFormat,
-  installPackage,
   commandLineInterface,
   shelljsChildProcessSpawn,
-  getAppName
 };

@@ -2,7 +2,7 @@ const {merge} = require("webpack-merge");
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const ESLintPlugin = require("eslint-webpack-plugin");
 const styleConfig = require("../../common/style.config");
-const {getGlobal, getclipath, getwebpropath} = require("../../common/utils");
+const {getGlobal, getclipath, getwebpropath} = require("../../../common/utils/path");
 const {resolveAppnameDir, resolveClientShare, resolveReactFrame} = require("../../common/utils/joinPath");
 const {pathJoin} = require("../../../common/utils/path");
 

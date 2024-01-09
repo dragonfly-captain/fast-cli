@@ -1,5 +1,5 @@
 const fs = require('fs');
-const {getwebpropath} = require('./index');
+const {getwebpropath} = require('../../../common/utils/path');
 const {pathJoin, getclipath, getGlobal} = require('../../../common/utils/path');
 
 

@@ -1,4 +1,4 @@
-const { getGlobal, getwebpropath} = require("./common/utils");
+const { getGlobal, getwebpropath} = require("../common/utils/path");
 const cwd = getGlobal('cwd');
 const frame = getGlobal('frame');
 const {pathJoin} = require("../common/utils/path");

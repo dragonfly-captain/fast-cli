@@ -1,6 +1,5 @@
 const { pathJoin } = require("../../common/utils/path");
-const { getwebpropath } = require("./utils");
-// console.log('getpropath', getpropath('.'), pathJoin("./crootProject", "/Users/jiayou/Desktop/work/FrontEnd"));
+const { getwebpropath } = require("../../common/utils/path");
 function fileOptionName(type = "asset", key, maxSize, hash = "[name].[contenthash:7][ext]") {
   const opts = {
     type,
@@ -16,7 +15,6 @@ function fileOptionName(type = "asset", key, maxSize, hash = "[name].[contenthas
       }
     }
   }
-  // url-loader
   return opts
 };
 
@@ -35,14 +33,4 @@ module.exports = {
   },
   // 用于从配置中解析入口起点
   context: pathJoin(".", getwebpropath('.'))
-  // context: pathJoin("./crootProject", "/Users/jiayou/Desktop/work/FrontEnd")
-  // node自带的模块，不需要安装，但有时候在实际项目中引入有可能出现报错，所以可以在此设置
-  // node: {
-  //   setImmediate: false,
-  //   dgram: "empty",
-  //   fs: "empty",
-  //   net: "empty",
-  //   tls: "empty",
-  //   child_process: "empty"
-  // }
 };
