@@ -1,0 +1,16 @@
+.DS_Store
+.vscode/
+node_modules/
+webProject/node_modules/
+webProject/client/
+pnpm-lock.yaml
+
+
+.git/
+npm-*.log
+yarn-*.log
+.npmrc
+.npmignore
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
