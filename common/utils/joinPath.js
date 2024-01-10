@@ -1,6 +1,6 @@
 const fs = require('fs');
-const {getwebpropath} = require('../../../common/utils/path');
-const {pathJoin, getclipath, getGlobal} = require('../../../common/utils/path');
+const {getwebpropath} = require('./path');
+const {pathJoin, getclipath, getGlobal} = require('./path');
 
 
 function frameConfigPath() {

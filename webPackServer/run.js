@@ -6,7 +6,7 @@ const webpack = require("webpack");
 const {merge} = require("webpack-merge");
 const WebpackDevServer = require("webpack-dev-server");
 const colors = require("colors");
-const {frameConfigPath} = require("./common/utils/joinPath");
+const {frameConfigPath} = require("../common/utils/joinPath");
 const {setGlobal, getGlobal} = require("../common/utils/path");
 
 async function webpackRun() {

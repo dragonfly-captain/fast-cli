@@ -4,7 +4,7 @@ const { HotModuleReplacementPlugin } = require('webpack');
 
 const { getclipath, pathJoin, getGlobal } = require("../../common/utils/path");
 const { getwebpropath } = require('../../common/utils/path');
-const { mergeAlias, mergePort, mergeProxy, mergePlugins } = require("./utils/customMergeConfig");
+const { mergeAlias, mergePort, mergeProxy, mergePlugins } = require("../../common/utils/customMergeConfig");
 const isProduction = getGlobal("isProduction");
 const appname = getGlobal("appname");    // 当前项目
 const frame = getGlobal("frame");        // 当前框架

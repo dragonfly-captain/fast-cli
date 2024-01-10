@@ -11,7 +11,7 @@ const webpackBase = require("./base");
 const envConfig = require("../common/env.config");
 const microConfig = require("../common/micro.config");
 const { getGlobal } = require("../../common/utils/path");
-const { resolveIndexHtml } = require("../common/utils/joinPath");
+const { resolveIndexHtml } = require("../../common/utils/joinPath");
 // const { resolvePosix, resolveIndexHtml } = require(`${$cwd}/tools/utils`);
 
 const oDev = envConfig.dev;  // 开发环境

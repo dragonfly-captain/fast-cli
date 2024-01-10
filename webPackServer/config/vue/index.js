@@ -4,7 +4,7 @@ const ESLintPlugin = require("eslint-webpack-plugin");
 const { VueLoaderPlugin } = require('vue-loader');
 const { pathJoin,getGlobal } = require("../../../common/utils/path");
 const styleConfig = require("../../common/style.config");
-const { resolveAppnameDir, resolveClientShare } = require("../../common/utils/joinPath");
+const { resolveAppnameDir, resolveClientShare } = require("../../../common/utils/joinPath");
 
 module.exports = merge(styleConfig, {
   resolve: {
