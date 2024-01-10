@@ -7,11 +7,8 @@ setGlobal("crootdir", process.cwd());
 setGlobal("webproroot", `${process.env.$cwd}`);
 // 全局注册方法
 setGlobal("crootweb", {
-  ...require("../../common/utils/path"),
-  ...require("../../common/utils/scripts")
+  ...require("../../common/utils/path")
 });
-// global["$cwd"] = process.cwd();
-// global["$isProduction"] = process.env.NODE_ENV === "production";
 
 module.exports = {
   "cwd": getGlobal("cwd"),
