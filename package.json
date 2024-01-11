@@ -10,8 +10,14 @@
     "build": "webpack",
     "format": "node_modules/.bin/prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\""
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "cw",
+    "crootfast"
+  ],
+  "author":{
+    "name": "zuojiayou",
+    "email": "host166@163.com"
+  },
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.17.6",
