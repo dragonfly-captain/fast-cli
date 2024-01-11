@@ -1,10 +1,10 @@
-const {merge} = require("webpack-merge");
+const { merge } = require("webpack-merge");
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const ESLintPlugin = require("eslint-webpack-plugin");
 const styleConfig = require("../../common/style.config");
-const {getGlobal, getclipath, getwebpropath} = require("../../common/utils/path");
-const {resolveAppnameDir, resolveClientShare, resolveReactFrame} = require("../../common/utils/joinPath");
-const {pathJoin} = require("../../common/utils/path");
+const { getclipath } = require("../../common/utils/path");
+const { resolveClientShare } = require("../../common/utils/joinPath");
+const { pathJoin } = require("../../common/utils/path");
 
 module.exports = merge(styleConfig, {
   resolve: {
@@ -46,7 +46,7 @@ module.exports = merge(styleConfig, {
     new ESLintPlugin({
       extensions: ['js', 'jsx', 'ts', 'tsx'],
       exclude: '/node_modules/',
-      files: [pathJoin('./', process.env.$cwd), resolveClientShare()],
+      files: [pathJoin('./src', process.env.$cwd), resolveClientShare()],
       overrideConfig: require(pathJoin('.eslintrc.js', getclipath('.')))
     }),
     new ReactRefreshWebpackPlugin()
