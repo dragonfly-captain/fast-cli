@@ -8,7 +8,7 @@ const { commandLoggerError, commandLoggerWarning, commandLoggerSuccess, isWin } 
 async function toCommanderLineInterfaceDevelop(customArg) {
   return isWin().then(async (stat) => {
     let webPack = path.join(process.cwd(), 'node_modules/crootfast-webpack');
-    const script = `${webPack} && node_modules/.bin/cross-env NODE_ENV=development npm_config_frame=react node ./scripts/run.js ${customArg}`
+    const script = `${webPack} && node ./scripts/run.js ${customArg}`
     if (stat) {
       await shelljsChildProcessSpawn('cd', `/d ${script}`);
     } else {
@@ -24,7 +24,7 @@ async function toCommanderLineInterfaceBuild(customArg) {
   let webPack = path.join(process.cwd(), 'node_modules/crootfast-webpack');
   if (checkDirExists(pathJoin('.', webPack))) {
     return isWin().then(async (stat) => {
-      const script = `${webPack} && node_modules/.bin/cross-env NODE_ENV=production node ./scripts/build.js ${customArg}`
+      const script = `${webPack} && node ./scripts/build.js ${customArg}`
       if (stat) {
         await shelljsChildProcessSpawn('cd', `/d ${script}`);  //  && move ${webPack}/dist ${webpro}
       } else {
