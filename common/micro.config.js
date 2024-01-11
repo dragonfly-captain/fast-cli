@@ -1,15 +1,10 @@
 const { ModuleFederationPlugin } = require('webpack').container;
 const { HotModuleReplacementPlugin } = require('webpack');
-// const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
 
-const { getclipath, pathJoin, getGlobal } = require("../../common/utils/path");
-const { getwebpropath } = require('../../common/utils/path');
-const { mergeAlias, mergePort, mergeProxy, mergePlugins } = require("../../common/utils/customMergeConfig");
-const isProduction = getGlobal("isProduction");
-const appname = getGlobal("appname");    // 当前项目
-const frame = getGlobal("frame");        // 当前框架
+const { pathJoin, getGlobal } = require("./utils/path");
+const { mergeAlias, mergePort, mergeProxy } = require("./utils/customMergeConfig");
 
-const webMicroPath = pathJoin(`../../../m.config`, process.env.PWD);
+const webMicroPath = pathJoin(`../../m.config`, process.env.PWD);
 const microConfig = require(webMicroPath);
 
 const webpackMicroConfig = {

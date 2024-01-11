@@ -9,8 +9,8 @@ function frameConfigPath() {
 
 // r
 function resolveIndexHtml() {
-  const projectIndexHTMLPath = pathJoin(`../../../public`, process.env.PWD);
-  const projectIndexHTML = pathJoin(`../../../public/index.html`, process.env.PWD);
+  const projectIndexHTMLPath = pathJoin(`../../public`, process.env.PWD);
+  const projectIndexHTML = pathJoin(`../../public/index.html`, process.env.PWD);
 
   if (fs.existsSync(projectIndexHTMLPath) && fs.existsSync(projectIndexHTML)) {
     return projectIndexHTML;

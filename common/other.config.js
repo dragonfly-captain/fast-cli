@@ -1,5 +1,5 @@
-const { pathJoin } = require("../../common/utils/path");
-const { getwebpropath } = require("../../common/utils/path");
+const { pathJoin } = require("./utils/path");
+const { getwebpropath } = require("./utils/path");
 function fileOptionName(type = "asset", key, maxSize, hash = "[name].[contenthash:7][ext]") {
   const opts = {
     type,

@@ -1,7 +1,6 @@
 "use strict";
 const fs = require("fs");
-const { pathJoin, getclipath, getLocalAddressIP, getGlobal } = require("../../common/utils/path");
-const { getwebpropath } = require("../../common/utils/path");
+const { pathJoin } = require("./utils/path");
 
 module.exports = {
   dev: {
@@ -22,7 +21,7 @@ module.exports = {
       // ca: fs.readFileSync(resolve("./webpackService/configs/ssl/ca.pem")),
     },
     // 默认是localhost，代表本地服务器的域名。
-    host: '0.0.0.0', //getLocalAddressIP(),
+    host: '0.0.0.0',
     // 端口号
     // port: getProcessPointName("PORT") || 7000,
     // 是否启动成功后打开浏览器的设置
@@ -45,7 +44,7 @@ module.exports = {
   },
   build: {
     // 资源打包路径
-    assetsBuildPath: pathJoin(`../../../dist`, process.env.PWD),
+    assetsBuildPath: pathJoin(`../../dist`, process.env.PWD),
     // 资源引入路径，可以配置OSS/CDN地址。
     assetsPublicPath: "/",
     // 资源的引用路径，如果设置则会在资源路径前添加一个值，比如设置"static/assets" => "static/assets/img/image.png"

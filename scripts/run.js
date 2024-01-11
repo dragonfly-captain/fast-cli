@@ -1,5 +1,5 @@
 'use strict';
-require("./common/alias");
+require("../common/alias");
 console.log('run...');
 
 const webpack = require("webpack");
@@ -20,7 +20,7 @@ async function webpackRun() {
     setGlobal(_key, value);
   })
   // 开发模式下的webpack配置
-  const WebpackDevelopConfig = require("./config/develop");
+  const WebpackDevelopConfig = require("../config/develop");
   try {
     const env = getGlobal('env');
     const frame = getGlobal('frame');

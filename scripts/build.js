@@ -1,5 +1,5 @@
 'use strict';
-require("./common/alias");
+require("../common/alias");
 console.log('build...');
 
 const webpack = require("webpack");
@@ -24,10 +24,10 @@ async function webpackBuild() {
   spinner.start();
 
   // 共用的基础配置
-  const envConfig = require("./common/env.config");
+  const envConfig = require("../common/env.config");
   function buildRun() {
     // produce配置文件
-    const productionConfig = require('./config/produce');
+    const productionConfig = require('../config/produce');
     const frameConfig = require(frameConfigPath());
     const webpackBuildConfig = merge(productionConfig, frameConfig);
 

@@ -1,14 +1,14 @@
 const path = require('path');
-const { commandLineInterface, shelljsChildProcessSpawn } = require('../common/utils');
-const { checkDirExists } = require('../common/utils/checkers');
-const { pathJoin } = require('../common/utils/path');
+const { commandLineInterface, shelljsChildProcessSpawn } = require('./utils');
+const { checkDirExists } = require('./utils/checkers');
+const { pathJoin } = require('./utils/path');
 const { commandLoggerError, commandLoggerWarning, commandLoggerSuccess, isWin } = require('./cmd');
 
 // 启动项目进行开发
 async function toCommanderLineInterfaceDevelop(customArg) {
   return isWin().then(async (stat) => {
-    let webPack = path.join(process.cwd(), 'node_modules/crootfast-webpack/webPackServer');
-    const script = `${webPack} && node_modules/.bin/cross-env NODE_ENV=development npm_config_frame=react node ./run.js ${customArg}`
+    let webPack = path.join(process.cwd(), 'node_modules/crootfast-webpack');
+    const script = `${webPack} && node_modules/.bin/cross-env NODE_ENV=development npm_config_frame=react node ./scripts/run.js ${customArg}`
     if (stat) {
       await shelljsChildProcessSpawn('cd', `/d ${script}`);
     } else {
@@ -21,10 +21,10 @@ async function toCommanderLineInterfaceDevelop(customArg) {
 
 // 打包构建项目
 async function toCommanderLineInterfaceBuild(customArg) {
-  let webPack = path.join(process.cwd(), 'node_modules/crootfast-webpack/webPackServer');
+  let webPack = path.join(process.cwd(), 'node_modules/crootfast-webpack');
   if (checkDirExists(pathJoin('.', webPack))) {
     return isWin().then(async (stat) => {
-      const script = `${webPack} && node_modules/.bin/cross-env NODE_ENV=production node ./build.js ${customArg}`
+      const script = `${webPack} && node_modules/.bin/cross-env NODE_ENV=production node ./scripts/build.js ${customArg}`
       if (stat) {
         await shelljsChildProcessSpawn('cd', `/d ${script}`);  //  && move ${webPack}/dist ${webpro}
       } else {

@@ -30,13 +30,7 @@ function getLocalAddressIP() {
 }
 
 function getclipath(pathname) {
-  // let dir = getGlobal('crootdir') ?? '';
   let dir = process.cwd() || '';
-  return path.join(dir, pathname);
-}
-
-function getpropath(pathname) {
-  let dir = getGlobal('prodir') || '';
   return path.join(dir, pathname);
 }
 
@@ -54,7 +48,6 @@ module.exports = {
   getGlobal,
   getLocalAddressIP,
   getclipath,
-  getpropath,
   getBaseName,
   getwebpropath
 };

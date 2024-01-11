@@ -1,4 +1,4 @@
-const { getGlobal } = require("../common/utils/path");
+const { getGlobal } = require("./common/utils/path");
 const cwd = getGlobal('cwd');
 const frame = getGlobal('frame');
 // const skip = process.env.npm_config.skip;
@@ -9,7 +9,6 @@ if (!frame && !skip) {
 }
 var path = `${cwd}/config/${frame}/eslint.config.js`;
 const config = require(path);
-// console.log(cwd, $Frame, config);
 
 const eslintConfig = {
   root: true

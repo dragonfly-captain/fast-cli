@@ -1,5 +1,5 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { getGlobal } = require("../../common/utils/path");
+const { getGlobal } = require("./utils/path");
 
 const isProduction = getGlobal('isProduction');
 

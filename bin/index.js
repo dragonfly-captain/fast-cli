@@ -1,12 +1,7 @@
 #! /usr/bin/env node
 
 const {program} = require('commander');
-const inquirer = require("inquirer");
-const path = require('path');
-const {setGlobal, getGlobal, getclipath, getpropath, pathJoin} = require("../common/utils/path");
-const package = require('../package.json');
-const {commandLineInterface} = require("../common/utils");
-const {toCommanderLineInterfaceBuild, toCommanderLineInterfaceDevelop} = require("../lib/create");
+const {toCommanderLineInterfaceBuild, toCommanderLineInterfaceDevelop} = require("../common/create");
 
 // 项目启动开发
 program.command('start').description('启动一个https协议的项目')

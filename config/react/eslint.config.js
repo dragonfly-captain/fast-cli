@@ -1,8 +1,8 @@
 /**
  * 安装 eslint 依赖包：pnpm install eslint eslint-plugin-react eslint-plugin-react-hooks -D -w
  */
-const {pathJoin} = require("../../../common/utils/path");
-const {getclipath} = require("../../../common/utils/path");
+const {pathJoin} = require("../../common/utils/path");
+const {getclipath} = require("../../common/utils/path");
 
 let isProduction = process.env.NODE_ENV === 'production';
 

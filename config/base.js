@@ -1,12 +1,12 @@
 const { merge } = require("webpack-merge");
-const { pathJoin, getclipath, getGlobal } = require("../../common/utils/path");
+const { pathJoin, getclipath, getGlobal } = require("../common/utils/path");
 const envConfig = require("../common/env.config");
 const otherConfig = require("../common/other.config");
 const microConfig = require("../common/micro.config");
-const { getwebpropath } = require("../../common/utils/path");
+const { getwebpropath } = require("../common/utils/path");
 const isProduction = getGlobal("isProduction");
 const frame = getGlobal("frame");        // 当前框架
-const projectAppName = pathJoin(`../../../`, process.env.PWD);
+const projectAppName = pathJoin(`../../`, process.env.PWD);
 
 const oDev = envConfig.dev;     // 开发环境
 const oBuild = envConfig.build; // 生产环境
