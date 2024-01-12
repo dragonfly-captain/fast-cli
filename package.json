@@ -8,6 +8,7 @@
   },
   "scripts": {
     "build": "webpack",
+    "start": "node ./scripts/run.js",
     "format": "node_modules/.bin/prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\""
   },
   "keywords": [
@@ -22,8 +23,6 @@
   "devDependencies": {},
   "dependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint-plugin-babel": "^5.3.1",
-    "eslint-plugin-import": "^2.29.1",
     "loading-cli": "^1.1.2",
     "lodash-es": "^4.17.21",
     "mobx": "^6.10.0",
@@ -61,6 +60,8 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-vue": "^9.14.1",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-import": "^2.29.1",
     "eslint-webpack-plugin": "^3.1.1",
     "external-remotes-plugin": "^1.0.0",
     "html-webpack-plugin": "^5.5.0",

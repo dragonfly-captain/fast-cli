@@ -1,16 +1,16 @@
 const fs = require('fs');
-const {getwebpropath} = require('./path');
+const {getwebpropath, execPtah, dirnamePtah} = require('./path');
 const {pathJoin, getclipath, getGlobal} = require('./path');
 
 
 function frameConfigPath() {
-  return pathJoin(`./config/${getGlobal('frame')}/index`, getclipath('.'));
+  return pathJoin(`./config/${getGlobal('frame')}/index`, dirnamePtah());
 }
 
 // r
 function resolveIndexHtml() {
-  const projectIndexHTMLPath = pathJoin(`../../public`, process.env.PWD);
-  const projectIndexHTML = pathJoin(`../../public/index.html`, process.env.PWD);
+  const projectIndexHTMLPath = pathJoin(`./public`, execPtah());
+  const projectIndexHTML = pathJoin(`./public/index.html`, execPtah());
 
   if (fs.existsSync(projectIndexHTMLPath) && fs.existsSync(projectIndexHTML)) {
     return projectIndexHTML;

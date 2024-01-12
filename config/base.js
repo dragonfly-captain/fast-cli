@@ -1,19 +1,20 @@
 const { merge } = require("webpack-merge");
-const { pathJoin, getclipath, getGlobal } = require("../common/utils/path");
+const { pathJoin, getclipath, getGlobal, execPtah, dirnamePtah} = require("../common/utils/path");
 const envConfig = require("../common/env.config");
 const otherConfig = require("../common/other.config");
 const microConfig = require("../common/micro.config");
 const { getwebpropath } = require("../common/utils/path");
 const isProduction = getGlobal("isProduction");
 const frame = getGlobal("frame");        // 当前框架
-const projectAppName = pathJoin(`../../`, process.env.PWD);
+
+const currentExecPtah = execPtah()
 
 const oDev = envConfig.dev;     // 开发环境
 const oBuild = envConfig.build; // 生产环境
 const WebpackBaseConfig = {
   // 入口文件配置，支持多入口配置。webpack会从这里分析构建内部依赖图。
   entry: {
-    app: `${projectAppName}/src/index`
+    app: `${currentExecPtah}/src/index`
   },
   // 输出配置
   output: {
@@ -32,19 +33,18 @@ const WebpackBaseConfig = {
     extensions: [],
     // import 或 require 的引用模块的别名，就是为了让你模块引入变得更简单。
     alias: {
-      "@root": pathJoin("./", getwebpropath('.')),  // 当前工作位置
-      "@reactapp": pathJoin(".", getwebpropath('.')),
-      "@vue3app": pathJoin("./apps/vue3", getwebpropath('.')),
-      "@shared": pathJoin("./shared", getwebpropath('.'))
     },
     modules: [
-      'node_modules',
-      pathJoin("./node_modules", getclipath('.'))
+      pathJoin("./node_modules", dirnamePtah()),
+      pathJoin("./node_modules", currentExecPtah)
     ]
   },
   // 配置loader的查找目录.
   resolveLoader: {
-    modules: [pathJoin("./node_modules", getclipath('.')), pathJoin("./loaders", getclipath('.'))]
+    modules: [
+      pathJoin("./node_modules", dirnamePtah()),
+      pathJoin("./node_modules", currentExecPtah),
+      pathJoin("./loaders", dirnamePtah())]
   },
   /**
    * 过滤指定的依赖不参与打包过程，可以使用自己配置好的OSS/CDN路径。

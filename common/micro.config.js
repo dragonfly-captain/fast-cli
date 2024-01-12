@@ -1,10 +1,10 @@
 const { ModuleFederationPlugin } = require('webpack').container;
 const { HotModuleReplacementPlugin } = require('webpack');
 
-const { pathJoin, getGlobal } = require("./utils/path");
+const { pathJoin, getGlobal, execPtah} = require("./utils/path");
 const { mergeAlias, mergePort, mergeProxy } = require("./utils/customMergeConfig");
 
-const webMicroPath = pathJoin(`../../m.config`, process.env.PWD);
+const webMicroPath = pathJoin(`./m.config`, execPtah());
 const microConfig = require(webMicroPath);
 
 const webpackMicroConfig = {

@@ -7,18 +7,11 @@ const {merge} = require("webpack-merge");
 const WebpackDevServer = require("webpack-dev-server");
 const colors = require("colors");
 const {frameConfigPath} = require("../common/utils/joinPath");
-const {setGlobal, getGlobal} = require("../common/utils/path");
+const {setGlobal, getGlobal, execPtah, dirnamePtah} = require("../common/utils/path");
+const WebpackDevelopConfig = require("../config/develop");
 
 async function webpackRun() {
-  // 如果直接输入了对应参数，则不用询问模式，后期考虑做成可视化的启动方案。
 
-  // const customArgs = process.argv.substring(2)
-  const customArgs = {}
-  process.argv.slice(2).forEach(it => {
-    const [key, value] = it.split('=')
-    const _key = key.replace(/-/g, '')
-    setGlobal(_key, value);
-  })
   // 开发模式下的webpack配置
   const WebpackDevelopConfig = require("../config/develop");
   try {

@@ -14,8 +14,8 @@ module.exports = {
     server: "spdy",
     // 支持https和spdy模式，https://webpack.docschina.org/configuration/dev-server/#devserverhttps
     https: {
-      key: fs.readFileSync(pathJoin("./ssl/server.key")), //fs.readFileSync()
-      cert: fs.readFileSync(pathJoin("./ssl/server.crt")),
+      key: fs.readFileSync(pathJoin("../ssl/server.key", __dirname)), //fs.readFileSync()
+      cert: fs.readFileSync(pathJoin("../ssl/server.crt", __dirname)),
       passphrase: "webpack-dev-server"
       // pfx: fs.readFileSync(resolve("./webpackService/configs/ssl/server.pfx")),
       // ca: fs.readFileSync(resolve("./webpackService/configs/ssl/ca.pem")),

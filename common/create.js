@@ -9,13 +9,13 @@ async function toCommanderLineInterfaceDevelop(customArg) {
   return isWin().then(async (stat) => {
     let webPack = path.join(process.cwd(), 'node_modules/crootfast-webpack');
     const script = `${webPack} && node ./scripts/run.js ${customArg}`
-    if (stat) {
-      await shelljsChildProcessSpawn('cd', `/d ${script}`);
-    } else {
-      await commandLineInterface('bash', ['-c', `cd  ${script}`], {
-        start: `正在通过脚手架启动项目...`
-      }, !0);
-    }
+    // if (stat) {
+    //   await shelljsChildProcessSpawn('cd', `/d ${script}`);
+    // } else {
+    //   await commandLineInterface('bash', ['-c', `cd  ${script}`], {
+    //     start: `正在通过脚手架启动项目...`
+    //   }, !0);
+    // }
   })
 }
 
@@ -25,14 +25,14 @@ async function toCommanderLineInterfaceBuild(customArg) {
   if (checkDirExists(pathJoin('.', webPack))) {
     return isWin().then(async (stat) => {
       const script = `${webPack} && node ./scripts/build.js ${customArg}`
-      if (stat) {
-        await shelljsChildProcessSpawn('cd', `/d ${script}`);  //  && move ${webPack}/dist ${webpro}
-      } else {
-        //  && mv ${webPack}/dist ${webpro}
-        await commandLineInterface('bash', ['-c', `cd ${script}`], {
-          start: `正在通过脚手架启动项目...`
-        }, !1);
-      }
+      // if (stat) {
+      //   await shelljsChildProcessSpawn('cd', `/d ${script}`);  //  && move ${webPack}/dist ${webpro}
+      // } else {
+      //   //  && mv ${webPack}/dist ${webpro}
+      //   await commandLineInterface('bash', ['-c', `cd ${script}`], {
+      //     start: `正在通过脚手架启动项目...`
+      //   }, !1);
+      // }
     })
   } else {
     commandLoggerError("目录出现异常，请检查。");

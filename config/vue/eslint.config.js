@@ -1,8 +1,9 @@
 /**
  * 安装 eslint 依赖包：pnpm install eslint eslint-plugin-vue -D -w
  */
+const {getGlobal} = require("../../common/utils/path");
 
-let isProduction = process.env.NODE_ENV === 'production';
+let isProduction = getGlobal('isProduction');
 
 module.exports = {
   root: true,
@@ -40,7 +41,7 @@ module.exports = {
     "no-extra-boolean-cast": 1, 						// 不必要的布尔转换
     "no-console": isProduction ? 2 : 0,			// 生产阶段禁止出现 console
     "no-debugger": isProduction ? 2 : 1,		// 生产阶段禁止出现 debugger 关键字，开发阶段预先警告出现debugger
-    "no-prototype-builtins": 0, 						// 在代码中存在访问 Object.prototype 上的方法 
+    "no-prototype-builtins": 0, 						// 在代码中存在访问 Object.prototype 上的方法
     "no-proto": 2, 													// 禁止使用__proto__属性
     "no-var": 2,  													// 禁用var，用let和const代替
     "no-unused-var": 0,		 									// 声明但没使用到的变量

@@ -5,6 +5,16 @@ function pathJoin(pathname = "", rootPath = process.cwd()) {
   return path.join(rootPath, ...pathname.split("/")); // path.posix.join
 }
 
+// 执行路径
+function execPtah(pathname = "") {
+  return process.cwd()
+}
+
+// 当前文件路径
+function dirnamePtah(pathname = "") {
+  return path.join(__dirname, '../../')
+}
+
 function setGlobal(key, value) {
   global[`$${key}`] = value;
 }
@@ -49,5 +59,7 @@ module.exports = {
   getLocalAddressIP,
   getclipath,
   getBaseName,
-  getwebpropath
+  getwebpropath,
+  execPtah,
+  dirnamePtah
 };

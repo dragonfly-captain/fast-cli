@@ -2,8 +2,8 @@ const { merge } = require("webpack-merge");
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const ESLintPlugin = require("eslint-webpack-plugin");
 const styleConfig = require("../../common/style.config");
-const { getclipath } = require("../../common/utils/path");
-const { resolveClientShare } = require("../../common/utils/joinPath");
+const {dirnamePtah, execPtah, getGlobal} = require("../../common/utils/path");
+const { resolveClientShare, resolveAppnameDir} = require("../../common/utils/joinPath");
 const { pathJoin } = require("../../common/utils/path");
 
 module.exports = merge(styleConfig, {
@@ -21,16 +21,31 @@ module.exports = merge(styleConfig, {
         enforce: "pre", // 确保代码被其他loader处理之前，先进行了ESLint检测。
         use: [
           {
+            loader: "eslint-loader",
+            options:{
+              configFile: pathJoin('./.eslintrc.js', dirnamePtah()),
+            }
+          },
+        ],
+        exclude: pathJoin('./node_modules/', execPtah()),
+        include: [
+          pathJoin('./src', execPtah())
+        ]
+      },
+      {
+        test: /\.(jsx|js)$/, // /\.(js|jsx)$/,
+        use: [
+          {
             loader: "babel-loader",
             options: {
               // cacheDirectory: true,
-              configFile: pathJoin('./babel.config.js', getclipath('.'))
+              configFile: pathJoin('./babel.config.js', dirnamePtah())
             }
           },
         ],
         exclude: /node_modules/,
         include: [
-          pathJoin('./', process.env.$cwd)
+          pathJoin('./src', execPtah())
         ]
       }
     ]
@@ -43,12 +58,12 @@ module.exports = merge(styleConfig, {
      * @param {string} eslintPath ESLint模块的路径
      * @param {string} overrideConfigFile 要覆盖的ESLint配置文件路径
      */
-    new ESLintPlugin({
-      extensions: ['js', 'jsx', 'ts', 'tsx'],
-      exclude: '/node_modules/',
-      files: [pathJoin('./src', process.env.$cwd), resolveClientShare()],
-      overrideConfig: require(pathJoin('.eslintrc.js', getclipath('.')))
-    }),
+    // new ESLintPlugin({
+    //   extensions: ['js', 'jsx', 'ts', 'tsx'],
+    //   exclude: '/node_modules/',
+    //   files: [pathJoin('./src/*', execPtah())],
+    //   overrideConfig: require(pathJoin('./.eslintrc.js', dirnamePtah()))
+    // }),
     new ReactRefreshWebpackPlugin()
   ]
 });

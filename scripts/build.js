@@ -12,13 +12,6 @@ const { setGlobal, getGlobal } = require("../common/utils/path");
 const { frameConfigPath } = require("../common/utils/joinPath");
 
 async function webpackBuild() {
-  const customArgs = {}
-  process.argv.slice(2).forEach(it => {
-    const [key, value] = it.split('=')
-    const _key = key.replace(/-/g, '')
-    setGlobal(_key, value);
-  })
-
   const spinner = loading(colors.green(`正在构建项目...`));
   spinner.frame(["🕐", "🕑", "🕒", "🕓", "🕔", "🕕", "🕖", "🕗", "🕘", "🕙", "🕚"]);
   spinner.start();

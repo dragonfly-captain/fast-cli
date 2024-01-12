@@ -1,6 +1,4 @@
 "use strict";
-// const fs = require("fs");
-// webpack
 const Webpack = require("webpack");
 // 合并webpack的配置
 const { merge } = require("webpack-merge");
@@ -12,10 +10,8 @@ const envConfig = require("../common/env.config");
 const microConfig = require("../common/micro.config");
 const { getGlobal } = require("../common/utils/path");
 const { resolveIndexHtml } = require("../common/utils/joinPath");
-// const { resolvePosix, resolveIndexHtml } = require(`${$cwd}/tools/utils`);
 
 const oDev = envConfig.dev;  // 开发环境
-const appname = getGlobal("appname");    // 当前项目
 const frame = getGlobal("frame");    // 当前框架
 
 const WebpackDevelopConfig = merge(webpackBase, {
@@ -30,15 +26,13 @@ const WebpackDevelopConfig = merge(webpackBase, {
     // 给页面返回值，可以在js中获取到配置的信息。
     new Webpack.DefinePlugin({
       "defineProcess": {
-        "ENV": `"development"`,
-        "APPNAME": `"${appname}"`
+        "ENV": `"development"`
       }
     }),
     // https://github.com/jantimon/html-webpack-plugin#options
     new HtmlWebpackPlugin({
       data: {
         env: `development`,
-        appname: appname
       },
       title: `development`,
       filename: "index.html",
@@ -77,7 +71,7 @@ const WebpackDevelopConfig = merge(webpackBase, {
           // 定义设置的html目录
           from: /.*/,
           // 定义目标文件，即跳转到指定目录下的index.html
-          to: "/index.html" //resolveIndexHtml(frame, appname)
+          to: "/index.html"
         }
       ]
     },
@@ -90,9 +84,6 @@ const WebpackDevelopConfig = merge(webpackBase, {
     open: oDev.autoOpenBrowser,                       // 是否默认打开浏览器
     proxy: oDev.proxyTable                            // 反向代理配置
   }
-  // experiments: {
-  //   outputModule: true
-  // }
 }, microConfig?.dev);
 
 module.exports = WebpackDevelopConfig;

@@ -1,4 +1,5 @@
-const isProduction = process.env.NODE_ENV === 'production'; // global.$isProduction;
+const {getGlobal} = require("../../common/utils/path");
+const isProduction = getGlobal('isProduction'); // global.$isProduction;
 
 const babelConfig = {
   presets: [
@@ -29,10 +30,6 @@ const babelConfig = {
 };
 
 if (isProduction) {
-  // 用于react props 类型验证的插件
-  //   babelConfig.plugins.push(
-  //     "babel-plugin-transform-react-remove-prop-types"
-  //   );
 } else {
   babelConfig.plugins.push(
     "react-refresh/babel"
