@@ -1,6 +1,6 @@
 {
   "name": "crootfast-webpack",
-  "version": "0.1.72",
+  "version": "0.1.74",
   "description": "大前端工程化命令行脚手架-webpack",
   "main": "bin/index.js",
   "bin": {
@@ -15,7 +15,7 @@
     "cw",
     "crootfast"
   ],
-  "author":{
+  "author": {
     "name": "zuojiayou",
     "email": "host166@163.com"
   },

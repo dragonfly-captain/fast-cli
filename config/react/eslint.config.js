@@ -1,4 +1,4 @@
-const {getGlobal} = require("../../common/utils/path");
+const { getGlobal } = require("../../common/utils/path");
 /**
  * 安装 eslint 依赖包：pnpm install eslint eslint-plugin-react eslint-plugin-react-hooks -D -w
  */
@@ -23,7 +23,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended",
   ],
-  plugins: ["import","react", "react-hooks", "babel"],
+  plugins: ["import", "react", "react-hooks", "babel"],
   /**
    * 参考 - https://cloud.tencent.com/developer/section/1135822
    * 参考 - https://segmentfault.com/a/1190000024509889
@@ -55,12 +55,12 @@ module.exports = {
     "react/react-in-jsx-scope": 0,   // 则确保 JSX 中使用的变量已经被定义和导入。在 React 17 以后，不再需要导入 React 来使用 JSX。
     "react/jsx-uses-react": 0,       // 规则防止 React 被错误地标记为未使用。
     "react-hooks/rules-of-hooks": 2, // 检查 React Hooks 的使用规则是否正确，此规则确保 Hooks 在顶层被调用，而不是在循环、条件或嵌套函数中。
-    "react-hooks/exhaustive-deps": 1, // 检查 Effect 的依赖数组，并确保你的 Effect 使用所有依赖的值，这有助于确保你的组件按预期工作
+    "react-hooks/exhaustive-deps": 0, // 检查 Effect 的依赖数组，并确保你的 Effect 使用所有依赖的值，这有助于确保你的组件按预期工作
     "react/display-name": 0,
   },
   settings: {
     react: {
-      version:'detect'
+      version: 'detect'
     }
   },
   // 针对 LESS 文件的配置
