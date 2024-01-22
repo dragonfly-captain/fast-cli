@@ -57,6 +57,7 @@ module.exports = {
     "react-hooks/rules-of-hooks": 2, // 检查 React Hooks 的使用规则是否正确，此规则确保 Hooks 在顶层被调用，而不是在循环、条件或嵌套函数中。
     "react-hooks/exhaustive-deps": 0, // 检查 Effect 的依赖数组，并确保你的 Effect 使用所有依赖的值，这有助于确保你的组件按预期工作
     "react/display-name": 0,
+    "react/prop-types": 0,
   },
   settings: {
     react: {
