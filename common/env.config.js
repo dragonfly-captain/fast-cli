@@ -4,8 +4,8 @@ const { pathJoin } = require("./utils/path");
 
 module.exports = {
   dev: {
-    // 资源引入路径，开发时为"/"。
-    assetsPublicPath: "auto",
+    // 资源引入路径，开发时为"/"。当被设置为 'auto' 时，Webpack 将自动确定资源（如 JavaScript、CSS 文件等）的加载路径。它基于你的文件的实际引入位置来决定这些资源的基础 URL。
+    assetsPublicPath: "/",
     // 资源的引用路径，如果设置则会在资源路径前添加一个值
     assetsPath: "",
     // 反向代理接口的配置项
