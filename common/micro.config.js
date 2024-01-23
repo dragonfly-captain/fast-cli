@@ -1,13 +1,14 @@
 const { ModuleFederationPlugin } = require('webpack').container;
 const { HotModuleReplacementPlugin } = require('webpack');
 
-const { pathJoin, getGlobal, execPtah} = require("./utils/path");
+const { pathJoin, getGlobal, execPtah } = require("./utils/path");
 const { mergeAlias, mergePort, mergeProxy } = require("./utils/customMergeConfig");
 
 const webMicroPath = pathJoin(`./m.config`, execPtah());
 const microConfig = require(webMicroPath);
 
 const webpackMicroConfig = {
+  assetsPath: microConfig?.assetsPath,
   base: {
     entry: microConfig?.base?.entry,
     resolve: {
@@ -20,6 +21,7 @@ const webpackMicroConfig = {
     devServer: {
       port: mergePort(microConfig?.dev?.port),
       proxy: mergeProxy({}, microConfig?.dev?.proxyTable),
+      historyApiFallback: configHistoryApiFallback(),
       server: microConfig?.dev?.server,
       open: microConfig?.dev?.open,
       hot: microConfig?.dev?.hot ?? true
@@ -43,3 +45,15 @@ if (microConfig?.base?.mfp) {
 }
 
 module.exports = webpackMicroConfig;
+
+
+function configHistoryApiFallback() {
+  return mergeProxy({}, microConfig?.dev?.historyApiFallback) ?? {
+    // disableDotRule: true, // 启用 disableDotRule 可以确保所有的前端路由请求，即使它们的 URL 包含点，都被正确地重定向到 index.html。这对于某些具有特殊 URL 结构的 SPA 尤其重要。
+    // 通过提供一个对象，这种行为可以通过像 rewrites 这样的配置项进一步控制
+    rewrites: [
+      // 现有的重写规则
+      { from: /.*/, to: '/index.html' }  // 定义设置的html目录，定义目标文件，即跳转到指定目录下的index.html
+    ]
+  }
+}

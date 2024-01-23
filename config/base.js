@@ -1,5 +1,5 @@
 const { merge } = require("webpack-merge");
-const { pathJoin, getclipath, getGlobal, execPtah, dirnamePtah} = require("../common/utils/path");
+const { pathJoin, getclipath, getGlobal, execPtah, dirnamePtah } = require("../common/utils/path");
 const envConfig = require("../common/env.config");
 const otherConfig = require("../common/other.config");
 const microConfig = require("../common/micro.config");
@@ -23,9 +23,9 @@ const WebpackBaseConfig = {
     // 打包构建时，针对资源路径输出的url链接。
     publicPath: isProduction ? oBuild.assetsPublicPath : oDev.assetsPublicPath,
     // 输出的文件名称
-    filename: "js/[name].[contenthash:7].min.js",
+    filename: `${microConfig.assetsPath}/js/[name].[contenthash:7].min.js`,
     // 开发中用到的"动态加载的模块import()"。 require.ensure是webpack v2中的api。
-    chunkFilename: "js/[name].chunk.[contenthash:7].min.js"  // [hash:9] [chunkhash:9] [contenthash:9]
+    chunkFilename: `${microConfig.assetsPath}/js/[name].chunk.[contenthash:7].min.js`  // [hash:9] [chunkhash:9] [contenthash:9]
   },
   // 可以设置模块如何被解析。
   resolve: {

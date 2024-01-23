@@ -77,13 +77,13 @@ const WEBPACK__PRODUCE = {
         // 三方库
         verdors: {
           test: /[\\/]node_modules[\\/]/,
-          filename: 'js/[id].cachegroups.js',
+          filename: `${microConfig.assetsPath}/js/[id].cachegroups.js`,
           chunks: 'all',
           priority: -10
         },
         common: { // 打包其余的的公共代码
           minChunks: 2, // 引入两次及以上被打包
-          filename: 'js/[id].cachegroup.js', // 分离包的名字
+          filename: `${microConfig.assetsPath}/js/[id].cachegroup.js`, // 分离包的名字
           chunks: 'all',
           priority: -20
         }
@@ -121,8 +121,8 @@ const WEBPACK__PRODUCE = {
       }
     }),
     new MiniCssExtractPlugin({  // !isProduction ? "[id].css" : ""
-      filename: "css/[name].[contenthash:7].css",
-      chunkFilename: "css/[id][contenthash:7].chunk.css"
+      filename: `${microConfig.assetsPath}/css/[name].[contenthash:7].css`,
+      chunkFilename: `${microConfig.assetsPath}/css/[id][contenthash:7].chunk.css`
     }),
     new CleanWebpackPlugin(),
     new CompressionPlugin({
