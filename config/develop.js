@@ -65,14 +65,11 @@ const WebpackDevelopConfig = merge(webpackBase, {
       webSocketTransport: 'ws'                        // 配置是用于配置 webpack-dev-server 与浏览器之间的 WebSocket 通信
     },
     historyApiFallback: {
+      // disableDotRule: true, // 启用 disableDotRule 可以确保所有的前端路由请求，即使它们的 URL 包含点，都被正确地重定向到 index.html。这对于某些具有特殊 URL 结构的 SPA 尤其重要。
       // 通过提供一个对象，这种行为可以通过像 rewrites 这样的配置项进一步控制
       rewrites: [
-        {
-          // 定义设置的html目录
-          from: /.*/,
-          // 定义目标文件，即跳转到指定目录下的index.html
-          to: "/index.html"
-        }
+        // 现有的重写规则
+        { from: /.*/, to: '/index.html' }  // 定义设置的html目录，定义目标文件，即跳转到指定目录下的index.html
       ]
     },
     server: oDev.server || "http",                    // 启动服务类型，http/https/HTTP2("spdy")
