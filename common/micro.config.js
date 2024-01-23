@@ -8,7 +8,7 @@ const webMicroPath = pathJoin(`./m.config`, execPtah());
 const microConfig = require(webMicroPath);
 
 const webpackMicroConfig = {
-  assetsPath: microConfig?.assetsPath,
+  assetsPath: microConfig?.assetsPath ?? 'webStatic',
   base: {
     entry: microConfig?.base?.entry,
     resolve: {
