@@ -1,9 +1,8 @@
-const { merge } = require("webpack-merge");
-const { pathJoin, getclipath, getGlobal, execPtah, dirnamePtah } = require("../common/utils/path");
+const {merge} = require("webpack-merge");
+const {pathJoin, getclipath, getGlobal, execPtah, dirnamePtah} = require("../common/utils/path");
 const envConfig = require("../common/env.config");
 const otherConfig = require("../common/other.config");
 const microConfig = require("../common/micro.config");
-const { getwebpropath } = require("../common/utils/path");
 const isProduction = getGlobal("isProduction");
 const frame = getGlobal("frame");        // 当前框架
 
@@ -32,8 +31,7 @@ const WebpackBaseConfig = {
     // 自动解析配置好的文件扩展名，依照配置的顺序解析。
     extensions: [],
     // import 或 require 的引用模块的别名，就是为了让你模块引入变得更简单。
-    alias: {
-    },
+    alias: {},
     modules: [
       pathJoin("./node_modules", dirnamePtah()),
       pathJoin("./node_modules", currentExecPtah)
@@ -49,8 +47,8 @@ const WebpackBaseConfig = {
   /**
    * 过滤指定的依赖不参与打包过程，可以使用自己配置好的OSS/CDN路径。
    * key=引用的库名称，value是npm install的包名称。
-  * http://webpack.html.cn/configuration/externals.html
-  **/
+   * http://webpack.html.cn/configuration/externals.html
+   **/
   externals: {},
   // 模块管理 - loader配置
   module: {
