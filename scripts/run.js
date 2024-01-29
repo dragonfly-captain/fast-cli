@@ -8,10 +8,11 @@ const WebpackDevServer = require("webpack-dev-server");
 const colors = require("colors");
 const {frameConfigPath} = require("../common/utils/joinPath");
 const {setGlobal, getGlobal, execPtah, dirnamePtah} = require("../common/utils/path");
-const WebpackDevelopConfig = require("../config/develop");
+const { checkAndUpdateDependency } = require("../common/utils/checkWebpackVersion");
+// const WebpackDevelopConfig = require("../config/develop");
 
 async function webpackRun() {
-
+  await checkAndUpdateDependency("crootfast-webpack");
   // 开发模式下的webpack配置
   const WebpackDevelopConfig = require("../config/develop");
   try {

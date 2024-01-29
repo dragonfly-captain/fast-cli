@@ -25,6 +25,9 @@ const webpackMicroConfig = {
       server: microConfig?.dev?.server,
       open: microConfig?.dev?.open,
       hot: microConfig?.dev?.hot ?? true
+    },
+    module:{
+      rules: microConfig?.dev?.rules ?? []
     }
   },
   build: {}

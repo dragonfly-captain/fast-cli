@@ -10,8 +10,12 @@ const colors = require("colors");
 const loading = require('loading-cli');
 const { setGlobal, getGlobal } = require("../common/utils/path");
 const { frameConfigPath } = require("../common/utils/joinPath");
+const { checkAndUpdateDependency } = require("../common/utils/checkWebpackVersion");
+
 
 async function webpackBuild() {
+  await checkAndUpdateDependency("crootfast-webpack");
+
   const spinner = loading(colors.green(`正在构建项目...`));
   spinner.frame(["🕐", "🕑", "🕒", "🕓", "🕔", "🕕", "🕖", "🕗", "🕘", "🕙", "🕚"]);
   spinner.start();
