@@ -1,6 +1,6 @@
 {
   "name": "crootfast-webpack",
-  "version": "0.1.91",
+  "version": "0.1.93",
   "description": "大前端工程化命令行脚手架-webpack",
   "main": "bin/index.js",
   "bin": {
@@ -21,7 +21,6 @@
   },
   "license": "ISC",
   "dependencies": {
-    "@babel/types": "^7.23.9",
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.22.9",
     "@babel/eslint-parser": "^7.22.9",
@@ -32,6 +31,7 @@
     "@babel/preset-env": "^7.22.9",
     "@babel/preset-react": "^7.22.5",
     "@babel/traverse": "^7.17.9",
+    "@babel/types": "^7.23.9",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.9",
     "@swc/core": "^1.3.70",
     "@vue/compiler-sfc": "^3.3.4",

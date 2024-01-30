@@ -10,7 +10,7 @@ function checkAndUpdateDependency(dependencyName) {
 
     try {
       // 获取最新版本
-      const response = await axios.get(`https://registry.npmjs.org/${dependencyName}`);
+      const response = await axios.get(`https://registry.npmmirror.com/crootfast-webpack/${dependencyName}`);
       const latestVersion = response.data['dist-tags'].latest;
 
       if (currentVersion !== latestVersion) {
