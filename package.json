@@ -1,6 +1,6 @@
 {
   "name": "crootfast-webpack",
-  "version": "0.1.96",
+  "version": "0.1.97",
   "description": "大前端工程化命令行脚手架-webpack",
   "main": "bin/index.js",
   "bin": {
