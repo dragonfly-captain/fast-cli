@@ -2,8 +2,8 @@ const { merge } = require("webpack-merge");
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const ESLintPlugin = require("eslint-webpack-plugin");
 const styleConfig = require("../../common/style.config");
-const {dirnamePtah, execPtah, getGlobal} = require("../../common/utils/path");
-const { resolveClientShare, resolveAppnameDir} = require("../../common/utils/joinPath");
+const { dirnamePtah, execPtah, getGlobal } = require("../../common/utils/path");
+const { resolveClientShare, resolveAppnameDir } = require("../../common/utils/joinPath");
 const { pathJoin } = require("../../common/utils/path");
 
 module.exports = merge(styleConfig, {
@@ -20,9 +20,16 @@ module.exports = merge(styleConfig, {
         test: /\.(jsx|js)$/, // /\.(js|jsx)$/,
         enforce: "pre", // 确保代码被其他loader处理之前，先进行了ESLint检测。
         use: [
+          // {
+          //   loader: "babel-loader",
+          //   options: {
+          //     // cacheDirectory: true,
+          //     configFile: pathJoin('./babel.config.js', dirnamePtah())
+          //   }
+          // },
           {
             loader: "eslint-loader",
-            options:{
+            options: {
               configFile: pathJoin('./.eslintrc.js', dirnamePtah()),
             }
           },

@@ -1,19 +1,20 @@
-const {merge} = require("webpack-merge");
-const {pathJoin, getclipath, getGlobal, execPtah, dirnamePtah} = require("../common/utils/path");
+const { merge } = require("webpack-merge");
+const { pathJoin, getclipath, getGlobal, execPtah, dirnamePtah } = require("../common/utils/path");
 const envConfig = require("../common/env.config");
 const otherConfig = require("../common/other.config");
 const microConfig = require("../common/micro.config");
 const isProduction = getGlobal("isProduction");
 const frame = getGlobal("frame");        // 当前框架
 
-const currentExecPtah = execPtah()
+const currentExecPtah = execPtah();
+// console.log('currentExecPtahcurrentExecPtahcurrentExecPtahcurrentExecPtahcurrentExecPtah', dirnamePtah(), currentExecPtah, pathJoin("./node_modules", dirnamePtah()), pathJoin("./node_modules", currentExecPtah));
 
 const oDev = envConfig.dev;     // 开发环境
 const oBuild = envConfig.build; // 生产环境
 const WebpackBaseConfig = {
   // 入口文件配置，支持多入口配置。webpack会从这里分析构建内部依赖图。
   entry: {
-    app: `${currentExecPtah}/src/index`
+    app: `${currentExecPtah}/src/index.jsx`
   },
   // 输出配置
   output: {

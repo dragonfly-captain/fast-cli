@@ -1,3 +1,6 @@
+/**
+ * 返回“源代码”。
+*/
 const t = require('@babel/types');
 const { cloneDeep } = require('lodash');
 
