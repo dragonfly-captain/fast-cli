@@ -10,6 +10,7 @@ yarn-error.log*
 test/*
 selenium-debug.log
 package-lock.json
+yarn.lock
 pnpm-lock.yaml
 # Editor directories and files
 .idea
