@@ -152,7 +152,7 @@ function inspectFunction(path) {
   });
 
   if (!(hasJSX || hasHooks)) {
-    throw new Error(`not component or hook detected`);
+    // throw new Error(`not component or hook detected`);
     // 这里可以添加您的处理逻辑
   }
 }

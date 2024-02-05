@@ -20,28 +20,6 @@ module.exports = merge(styleConfig, {
         test: /\.(jsx|js)$/, // /\.(js|jsx)$/,
         enforce: "pre", // 确保代码被其他loader处理之前，先进行了ESLint检测。
         use: [
-          // {
-          //   loader: "babel-loader",
-          //   options: {
-          //     // cacheDirectory: true,
-          //     configFile: pathJoin('./babel.config.js', dirnamePtah())
-          //   }
-          // },
-          {
-            loader: "eslint-loader",
-            options: {
-              configFile: pathJoin('./.eslintrc.js', dirnamePtah()),
-            }
-          },
-        ],
-        exclude: pathJoin('./node_modules/', execPtah()),
-        include: [
-          pathJoin('./src', execPtah())
-        ]
-      },
-      {
-        test: /\.(jsx|js)$/, // /\.(js|jsx)$/,
-        use: [
           {
             loader: "babel-loader",
             options: {
@@ -49,12 +27,37 @@ module.exports = merge(styleConfig, {
               configFile: pathJoin('./babel.config.js', dirnamePtah())
             }
           },
+          {
+            loader: "eslint-loader",
+            options: {
+              configFile: pathJoin('./.eslintrc.js', dirnamePtah()),
+            }
+          },
         ],
-        exclude: /node_modules/,
+        exclude: [
+          pathJoin('./node_modules/', execPtah()),
+          /node_modules/
+        ],
         include: [
           pathJoin('./src', execPtah())
         ]
-      }
+      },
+      // {
+      //   test: /\.(jsx|js)$/, // /\.(js|jsx)$/,
+      //   use: [
+      //     {
+      //       loader: "babel-loader",
+      //       options: {
+      //         // cacheDirectory: true,
+      //         configFile: pathJoin('./babel.config.js', dirnamePtah())
+      //       }
+      //     },
+      //   ],
+      //   exclude: /node_modules/,
+      //   include: [
+      //     pathJoin('./src', execPtah())
+      //   ]
+      // }
     ]
   },
   plugins: [

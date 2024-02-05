@@ -30,7 +30,7 @@ module.exports = {
           loader: "css-loader",
           options: {
             importLoaders: 2,
-            // esModule: false,
+            // esModule: true, // 使用 ES 模块导入 CSS，可以让tree shaking更好的工作。
             modules: {
               localIdentName: '[path]_[local]_[hash:base64:5]'
             }
