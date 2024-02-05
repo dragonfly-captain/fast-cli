@@ -15,6 +15,11 @@ function dirnamePtah(pathname = "") {
   return path.join(__dirname, '../../')
 }
 
+// 从当前命令行路径开始查找
+function execRootPath(pathname = "") {
+  return path.join(process.cwd(), pathname);
+}
+
 function setGlobal(key, value) {
   global[`$${key}`] = value;
 }
@@ -61,5 +66,6 @@ module.exports = {
   getBaseName,
   getwebpropath,
   execPtah,
+  execRootPath,
   dirnamePtah
 };

@@ -1,10 +1,12 @@
 const { merge } = require("webpack-merge");
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const ESLintPlugin = require("eslint-webpack-plugin");
+// const ESLintPlugin = require("eslint-webpack-plugin");
+const InjectMutationObserverPlugin = require('../../plugins/InjectMutationObserverPlugin');
 const styleConfig = require("../../common/style.config");
 const { dirnamePtah, execPtah, getGlobal } = require("../../common/utils/path");
 const { resolveClientShare, resolveAppnameDir } = require("../../common/utils/joinPath");
 const { pathJoin } = require("../../common/utils/path");
+const isProduction = getGlobal("isProduction");
 
 module.exports = merge(styleConfig, {
   resolve: {
@@ -74,6 +76,7 @@ module.exports = merge(styleConfig, {
     //   files: [pathJoin('./src/*', execPtah())],
     //   overrideConfig: require(pathJoin('./.eslintrc.js', dirnamePtah()))
     // }),
-    new ReactRefreshWebpackPlugin()
+    new ReactRefreshWebpackPlugin(),
+    ...(isProduction ? [] : [new InjectMutationObserverPlugin()])
   ]
 });
