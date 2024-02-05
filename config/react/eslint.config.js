@@ -47,7 +47,7 @@ module.exports = {
     "no-var": 2,  													// 禁用var，用let和const代替
     "no-unused-var": 0,		 									// 声明但没使用到的变量
     "no-empty": 2,  												// 禁止空块语句
-    "no-unused-vars": 2,                    // 禁止存在未使用的变量
+    "no-unused-vars": 1,                    // 禁止存在未使用的变量
     "max-params": [2, 5], 									// 函数参数过多, 注意可以使用对象传参，调整为3-5比较整洁一些，如果考虑项目有历史代码，可以往大了调整
     "max-nested-callbacks": [2, 3],			 		// 最大回调深度 为3层
     "for-direction": 2,	 										// 避免条件永远无法到达的循环
@@ -57,7 +57,7 @@ module.exports = {
     "react-hooks/rules-of-hooks": 2, // 检查 React Hooks 的使用规则是否正确，此规则确保 Hooks 在顶层被调用，而不是在循环、条件或嵌套函数中。
     "react-hooks/exhaustive-deps": 0, // 检查 Effect 的依赖数组，并确保你的 Effect 使用所有依赖的值，这有助于确保你的组件按预期工作
     "react/display-name": 0,
-    "react/prop-types": 0,
+    "react/prop-types": 0
   },
   settings: {
     react: {
