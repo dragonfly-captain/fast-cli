@@ -41,7 +41,7 @@ function LintCodeLoader(source) {
           if (calleeName === 'useState') {
             useStateCount++;
           }
-          if (calleeName === 'useObserve') {
+          if (calleeName === 'useObserve' || calleeName === 'useReactive') {
             useObserveCount++;
           }
           // 检查是否是 `useState` 的调用
