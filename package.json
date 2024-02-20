@@ -1,6 +1,6 @@
 {
   "name": "crootfast-webpack",
-  "version": "0.1.97",
+  "version": "0.1.99",
   "description": "大前端工程化命令行脚手架-webpack",
   "main": "bin/index.js",
   "bin": {
@@ -12,6 +12,7 @@
     "format": "node_modules/.bin/prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\""
   },
   "keywords": [
+    "webpack",
     "cw",
     "crootfast"
   ],
