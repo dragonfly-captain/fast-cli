@@ -81,9 +81,7 @@ class InjectMutationObserverPlugin {
 </script>
 `;
         // 将observerScript注入到HTML中
-        if (errors.length) {
-          data.html += observerScript;
-        }
+        data.html += observerScript;
         cb(null, data);
       });
     });

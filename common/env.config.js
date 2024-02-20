@@ -1,6 +1,6 @@
 "use strict";
 const fs = require("fs");
-const { pathJoin } = require("./utils/path");
+const { pathJoin, execRootPath } = require("./utils/path");
 
 module.exports = {
   dev: {
@@ -44,7 +44,7 @@ module.exports = {
   },
   build: {
     // 资源打包路径
-    assetsBuildPath: pathJoin(`../../dist`, process.env.PWD),
+    assetsBuildPath: execRootPath("./dist"), // pathJoin(`../../dist`, process.env.PWD),
     // 资源引入路径，可以配置OSS/CDN地址。
     assetsPublicPath: "/",
     // 资源的引用路径，如果设置则会在资源路径前添加一个值，比如设置"static/assets" => "static/assets/img/image.png"

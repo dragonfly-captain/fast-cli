@@ -11,6 +11,7 @@ let interfacePath = null;
 function ReactResourceCodeLoader(source) {
   // const { hookPath, proxyMaxCount = 5, stateMaxCount = 7 } = this.getOptions();
   const asyncCallback = this.async();
+  // console.log("ReactResourceCodeLoader", source);
 
   const AST = BabelParserSourceCode(source);
   // 克隆原始 AST
@@ -63,7 +64,7 @@ function ReactResourceCodeLoader(source) {
 
   // 生成最终代码
   const finalCode = BabelGenerateSourceCode(AST, {}).code;
-  console.log("finalCode.code", finalCode);
+  // console.log("finalCode.code", finalCode);
 
   asyncCallback(null, finalCode);
 };

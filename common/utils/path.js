@@ -7,12 +7,12 @@ function pathJoin(pathname = "", rootPath = process.cwd()) {
 
 // 执行路径
 function execPtah(pathname = "") {
-  return process.cwd()
+  return process.cwd();
 }
 
 // 当前文件路径
 function dirnamePtah(pathname = "") {
-  return path.join(__dirname, '../../')
+  return path.join(__dirname, '../../');
 }
 
 // 从当前命令行路径开始查找

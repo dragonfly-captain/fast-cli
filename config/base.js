@@ -14,7 +14,7 @@ const oBuild = envConfig.build; // 生产环境
 const WebpackBaseConfig = {
   // 入口文件配置，支持多入口配置。webpack会从这里分析构建内部依赖图。
   entry: {
-    app: `${currentExecPtah}/src/index.jsx`
+    app: `${currentExecPtah}/src/index`
   },
   // 输出配置
   output: {
