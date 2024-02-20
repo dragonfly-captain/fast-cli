@@ -9,6 +9,9 @@ function LintCodeLoader(source) {
   const { hookPath, proxyMaxCount = 5, stateMaxCount = 7 } = this.getOptions();
   const asyncCallback = this.async();
 
+  let currentPath = this.data.filePath?.split("!")?.at(1);
+  // console.log(currentPath, '---this.data.filePath---', this.data.filePath);
+
   const AST = BabelParserSourceCode(source);
   BabelTraverseSourceCode(AST, {
     ImportDeclaration(path) {
@@ -47,12 +50,12 @@ function LintCodeLoader(source) {
           // 检查是否是 `useState` 的调用
           if (useStateCount > Math.min(stateMaxCount, 7)) {
             // useObserveCallCount = useStateCount;
-            throw new Error(`useState is used more than ${stateMaxCount} times`);
+            throw new Error(`useState is used more than ${stateMaxCount} times to path: ${currentPath}`);
           }
           // 检查是否是 `useObserve` 的调用
           if (useObserveCount > Math.min(proxyMaxCount, 3)) {
             // useStateCallCount = useObserveCount;
-            throw new Error(`useObserve is used more than ${proxyMaxCount} times`);
+            throw new Error(`useObserve is used more than ${proxyMaxCount} times times to path: ${currentPath}`);
           }
         }
       });
@@ -126,6 +129,7 @@ function LintCodeLoader(source) {
 LintCodeLoader.pitch = function (filePath, loaderPath, data) {
   // console.log('---------- pitch function')
   useStateImported = false;
+  data.filePath = filePath;
   // useObserveCallCount = 0;
   // useStateCallCount = 0;
 };
