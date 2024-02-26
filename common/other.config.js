@@ -1,10 +1,11 @@
+const webpackMicroConfig = require("./micro.config");
 const { pathJoin } = require("./utils/path");
 const { getwebpropath } = require("./utils/path");
 function fileOptionName(type = "asset", key, maxSize, hash = "[name].[contenthash:7][ext]") {
   const opts = {
     type,
     generator: {
-      filename: `${key}/${hash}`
+      filename: `${webpackMicroConfig.assetsPath}/${key}/${hash}`
     }
   };
   if (!!maxSize) {
