@@ -18,6 +18,7 @@ const WebpackBaseConfig = {
   },
   // 输出配置
   output: {
+    // scriptType: "module",
     // 输出的目录地址
     path: oBuild.assetsBuildPath,
     // 打包构建时，针对资源路径输出的url链接。
@@ -38,6 +39,7 @@ const WebpackBaseConfig = {
       pathJoin("./node_modules", currentExecPtah)
     ]
   },
+  // target: 'web',
   // 配置loader的查找目录.
   resolveLoader: {
     modules: [

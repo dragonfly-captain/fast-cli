@@ -31,6 +31,8 @@ const oBuild = envConfig.build;
 
 const WEBPACK__PRODUCE = {
   mode: 'production',
+  // 生成以 .map 结尾的 SourceMap 文件
+  // devtool: oBuild.devtool,
   optimization: {
     minimize: true, // 告知 webpack 使用 TerserPlugin
     minimizer: [
@@ -77,7 +79,7 @@ const WEBPACK__PRODUCE = {
         // 三方库
         verdors: {
           test: /[\\/]node_modules[\\/]/,
-          filename: `${microConfig.assetsPath}/js/[id].cachegroups.js`,
+          filename: `${microConfig.assetsPath}/js/[id].cachegroups.js`, // [id] [name]
           chunks: 'all',
           priority: -10
         },
@@ -122,7 +124,7 @@ const WEBPACK__PRODUCE = {
     }),
     new MiniCssExtractPlugin({  // !isProduction ? "[id].css" : ""
       filename: `${microConfig.assetsPath}/css/[name].[contenthash:7].css`,
-      chunkFilename: `${microConfig.assetsPath}/css/[id][contenthash:7].chunk.css`
+      chunkFilename: `${microConfig.assetsPath}/css/[id].[contenthash:7].chunk.css`
     }),
     new CleanWebpackPlugin(),
     new CompressionPlugin({

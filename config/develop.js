@@ -12,7 +12,7 @@ const { getGlobal } = require("../common/utils/path");
 const { resolveIndexHtml } = require("../common/utils/joinPath");
 
 const oDev = envConfig.dev;  // 开发环境
-const frame = getGlobal("frame");    // 当前框架
+// const frame = getGlobal("frame");    // 当前框架
 
 const WebpackDevelopConfig = merge(webpackBase, {
   // 开发模式，打包更加快速，省了代码优化步骤

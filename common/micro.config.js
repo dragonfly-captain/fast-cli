@@ -15,7 +15,7 @@ const webpackMicroConfig = {
       // import 或 require 的引用模块的别名，就是为了让你模块引入变得更简单。
       alias: mergeAlias({}, microConfig?.base?.alias)
     },
-    plugins: microConfig?.base?.rules ?? []
+    plugins: [] // microConfig?.base?.plugins ?? []
   },
   dev: {
     devServer: {
@@ -28,12 +28,13 @@ const webpackMicroConfig = {
     },
     module: {
       rules: microConfig?.dev?.rules ?? []
-    }
+    },
+    plugins: microConfig?.dev?.plugins ?? []
   },
   build: {
-    module: {
-      rules: microConfig?.pro?.rules ?? []
-    }
+    // module: {
+    //   rules: microConfig?.pro?.rules ?? []
+    // }
   }
 };
 
@@ -44,7 +45,7 @@ if (microConfig?.base?.mfp) {
         new ModuleFederationPlugin(itemOptions)
       );
     });
-    webpackMicroConfig.base.plugins.push(
+    webpackMicroConfig.dev.plugins.push(
       // 热加载
       new HotModuleReplacementPlugin()
     );
