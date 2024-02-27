@@ -38,18 +38,16 @@ const webpackMicroConfig = {
   }
 };
 
-if (microConfig?.base?.mfp) {
-  if (microConfig?.base?.mfp?.length) {
-    microConfig?.base?.mfp.map(itemOptions => {
-      webpackMicroConfig.base.plugins.push(
-        new ModuleFederationPlugin(itemOptions)
-      );
-    });
-    webpackMicroConfig.dev.plugins.push(
-      // 热加载
-      new HotModuleReplacementPlugin()
+if (microConfig?.base?.mfp?.length && Array.isArray(microConfig?.base?.mfp)) {
+  microConfig.base.mfp.map(itemOptions => {
+    webpackMicroConfig.base.plugins.push(
+      new ModuleFederationPlugin(itemOptions)
     );
-  }
+  });
+  webpackMicroConfig.dev.plugins.push(
+    // 热加载
+    new HotModuleReplacementPlugin()
+  );
 }
 
 module.exports = webpackMicroConfig;
