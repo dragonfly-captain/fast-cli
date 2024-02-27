@@ -81,13 +81,15 @@ const WEBPACK__PRODUCE = {
           test: /[\\/]node_modules[\\/]/,
           filename: `${microConfig.assetsPath}/js/[id].cachegroups.js`, // [id] [name]
           chunks: 'all',
-          priority: -10
+          priority: -10,
+          reuseExistingChunk: true // 避免重复打包
         },
         common: { // 打包其余的的公共代码
           minChunks: 2, // 引入两次及以上被打包
           filename: `${microConfig.assetsPath}/js/[id].cachegroup.js`, // 分离包的名字
           chunks: 'all',
-          priority: -20
+          priority: -20,
+          reuseExistingChunk: true
         }
       }
     },

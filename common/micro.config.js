@@ -1,3 +1,7 @@
+/**
+ * 这里是真正接各个项目独立配置的地方
+*/
+
 const { ModuleFederationPlugin } = require('webpack').container;
 const { HotModuleReplacementPlugin } = require('webpack');
 
@@ -11,6 +15,7 @@ const webpackMicroConfig = {
   assetsPath: microConfig?.assetsPath ?? 'webStatic',
   base: {
     entry: microConfig?.base?.entry,
+    output: microConfig?.base?.output,
     resolve: {
       // import 或 require 的引用模块的别名，就是为了让你模块引入变得更简单。
       alias: mergeAlias({}, microConfig?.base?.alias)
@@ -32,6 +37,7 @@ const webpackMicroConfig = {
     plugins: microConfig?.dev?.plugins ?? []
   },
   build: {
+    optimization: microConfig?.pro?.optimization
     // module: {
     //   rules: microConfig?.pro?.rules ?? []
     // }
