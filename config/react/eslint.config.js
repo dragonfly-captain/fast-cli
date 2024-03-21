@@ -49,7 +49,7 @@ module.exports = {
     "no-empty": 2,  												// 禁止空块语句
     "no-unused-vars": 1,                    // 禁止存在未使用的变量
     "max-params": [2, 5], 									// 函数参数过多, 注意可以使用对象传参，调整为3-5比较整洁一些，如果考虑项目有历史代码，可以往大了调整
-    "max-nested-callbacks": [2, 3],			 		// 最大回调深度 为3层
+    "max-nested-callbacks": [2, 4],			 		// 最大回调深度 为3层
     "for-direction": 2,	 										// 避免条件永远无法到达的循环
     "no-unneeded-ternary": 2,               // 禁止不必要的嵌套，var isYes = answer === 1 ? true : false;
     "react/react-in-jsx-scope": 0,   // 则确保 JSX 中使用的变量已经被定义和导入。在 React 17 以后，不再需要导入 React 来使用 JSX。
